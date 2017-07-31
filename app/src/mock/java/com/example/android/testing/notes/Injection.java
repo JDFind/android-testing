@@ -16,6 +16,8 @@
 
 package com.example.android.testing.notes;
 
+import android.content.Context;
+
 import com.example.android.testing.notes.data.FakeNotesServiceApiImpl;
 import com.example.android.testing.notes.data.NoteRepositories;
 import com.example.android.testing.notes.data.NotesRepository;
@@ -29,8 +31,8 @@ import com.example.android.testing.notes.util.ImageFile;
  */
 public class Injection {
 
-    public static ImageFile provideImageFile() {
-        return new FakeImageFileImpl();
+    public static ImageFile provideImageFile(Context context) {
+        return new FakeImageFileImpl(context);
     }
 
     public static NotesRepository provideNotesRepository() {

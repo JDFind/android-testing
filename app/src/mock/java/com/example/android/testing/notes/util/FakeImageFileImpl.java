@@ -16,12 +16,18 @@
 
 package com.example.android.testing.notes.util;
 
+import android.content.Context;
+
 import java.io.IOException;
 
 /**
  * Fake implementation of {@link ImageFile} to inject a fake image in a hermetic test.
  */
 public class FakeImageFileImpl extends ImageFileImpl {
+
+    public FakeImageFileImpl(Context context) {
+        super(context);
+    }
 
     @Override
     public void create(String name, String extension) throws IOException {
@@ -30,7 +36,7 @@ public class FakeImageFileImpl extends ImageFileImpl {
 
     @Override
     public String getPath() {
-        return "file:///android_asset/atsl-logo.png";
+        return "content:///android_asset/atsl-logo.png";
     }
 
     @Override

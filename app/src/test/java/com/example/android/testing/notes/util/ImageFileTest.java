@@ -23,6 +23,7 @@ import org.mockito.Mock;
 import org.powermock.core.classloader.annotations.PrepareForTest;
 import org.powermock.modules.junit4.PowerMockRunner;
 
+import android.content.Context;
 import android.os.Environment;
 
 import java.io.File;
@@ -62,12 +63,15 @@ public class ImageFileTest {
     @Mock
     private File mImageFile;
 
+    @Mock
+    private Context mContext;
+
     private ImageFileImpl mFileHelper;
 
     @Before
     public void createImageFile() throws IOException {
         // Get a reference to the class under test
-        mFileHelper = new ImageFileImpl();
+        mFileHelper = new ImageFileImpl(mContext);
 
         // Setup required static mocking
         withStaticallyMockedEnvironmentAndFileApis();
@@ -103,6 +107,7 @@ public class ImageFileTest {
                 .thenReturn(mDirectory);
 
         // Make the File class return a mocked image file
-        when(File.createTempFile(anyString(), anyString(), eq(mDirectory))).thenReturn(mImageFile);
+        when(File.createTempFile(anyString(), anyString(), eq(mDirectory)))
+                .thenReturn(mImageFile);
     }
 }
