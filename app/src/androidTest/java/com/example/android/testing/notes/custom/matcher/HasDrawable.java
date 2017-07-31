@@ -27,7 +27,7 @@ import android.widget.ImageView;
  * A custom {@link Matcher} for Espresso that checks if an {@link ImageView} has a drawable applied
  * to it.
  */
-public class ImageViewHasDrawableMatcher {
+public class HasDrawable {
 
     public static BoundedMatcher<View, ImageView> hasDrawable() {
         return new BoundedMatcher<View, ImageView>(ImageView.class) {
