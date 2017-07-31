@@ -41,4 +41,5 @@ public interface NotesRepository {
 
     void refreshData();
 
+    void removeNote(@NonNull Note note);
 }

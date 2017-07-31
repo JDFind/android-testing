@@ -85,4 +85,10 @@ public class InMemoryNotesRepository implements NotesRepository {
         mCachedNotes = null;
     }
 
+    @Override
+    public void removeNote(@NonNull Note note) {
+        checkNotNull(note);
+        mNotesServiceApi.removeNote(note);
+        refreshData();
+    }
 }

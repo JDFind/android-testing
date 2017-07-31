@@ -56,4 +56,8 @@ public class NotesServiceApiImpl implements NotesServiceApi {
         NOTES_SERVICE_DATA.put(note.getId(), note);
     }
 
+    @Override
+    public void removeNote(Note note) {
+        NOTES_SERVICE_DATA.remove(note.getId());
+    }
 }
