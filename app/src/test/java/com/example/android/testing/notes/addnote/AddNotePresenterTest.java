@@ -125,5 +125,4 @@ public class AddNotePresenterTest {
         verify(mAddNoteView).showImageError();
         verify(mImageFile).delete();
     }
-
 }
