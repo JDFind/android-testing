@@ -73,6 +73,9 @@ dependencies {
     androidTestCompile "com.android.support.test:runner:$rootProject.ext.runnerVersion"
     androidTestCompile "com.android.support.test:rules:$rootProject.ext.rulesVersion"
 
+    // UiAutomator dependency
+    androidTestCompile "com.android.support.test.uiautomator:uiautomator-v18:$rootProject.ext.uiautomatorVersion"
+
     // Espresso UI Testing dependencies
     androidTestCompile "com.android.support.test.espresso:espresso-core:$rootProject.ext.espressoVersion"
     androidTestCompile "com.android.support.test.espresso:espresso-contrib:$rootProject.ext.espressoVersion"
