@@ -35,7 +35,6 @@ import static org.hamcrest.Matchers.allOf;
  */
 
 @RunWith(AndroidJUnit4.class)
-@LargeTest
 @SdkSuppress(minSdkVersion = 18)
 public class AddNoteTests {
 
@@ -55,6 +54,9 @@ public class AddNoteTests {
         mDevice = UiDevice.getInstance(mInstrumentation);
     }
 
+    /**
+     * FIXME: storage permission must be granted before running this test
+     */
     @LargeTest
     @Test
     public void addNoteWithImage() throws Exception {
