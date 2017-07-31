@@ -26,12 +26,10 @@ import java.util.List;
 public interface NotesRepository {
 
     interface LoadNotesCallback {
-
         void onNotesLoaded(List<Note> notes);
     }
 
     interface GetNoteCallback {
-
         void onNoteLoaded(Note note);
     }
 

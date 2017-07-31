@@ -77,7 +77,7 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
     public void onActivityCreated(Bundle savedInstanceState) {
         super.onActivityCreated(savedInstanceState);
         mActionListener = new AddNotePresenter(Injection.provideNotesRepository(), this,
-                Injection.provideImageFile());
+                Injection.provideImageFile(getContext()));
 
         FloatingActionButton fab =
                 (FloatingActionButton) getActivity().findViewById(R.id.fab_add_notes);
@@ -141,15 +141,16 @@ public class AddNoteFragment extends Fragment implements AddNoteContract.View {
 
     @Override
     public void openCamera(String saveTo) {
+
         // Open the camera to take a picture.
         Intent takePictureIntent = new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+
         // Check if there is a camera app installed to handle our Intent
         if (takePictureIntent.resolveActivity(getContext().getPackageManager()) != null) {
             takePictureIntent.putExtra(MediaStore.EXTRA_OUTPUT, Uri.parse(saveTo));
             startActivityForResult(takePictureIntent, REQUEST_CODE_IMAGE_CAPTURE);
         } else {
-            Snackbar.make(mTitle, getString(R.string.cannot_connect_to_camera_message),
-                    Snackbar.LENGTH_SHORT).show();
+            Snackbar.make(mTitle, getString(R.string.cannot_connect_to_camera_message), Snackbar.LENGTH_SHORT).show();
         }
     }
 

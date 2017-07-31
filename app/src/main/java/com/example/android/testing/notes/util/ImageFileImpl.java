@@ -16,6 +16,7 @@
 
 package com.example.android.testing.notes.util;
 
+import android.content.Context;
 import android.net.Uri;
 import android.os.Environment;
 import android.support.annotation.VisibleForTesting;
@@ -29,6 +30,12 @@ import java.io.IOException;
  */
 public class ImageFileImpl implements ImageFile {
 
+    private Context context;
+
+    public ImageFileImpl(Context context) {
+        this.context = context.getApplicationContext();
+    }
+
     @VisibleForTesting
     File mImageFile;
 
@@ -38,9 +45,9 @@ public class ImageFileImpl implements ImageFile {
                 Environment.DIRECTORY_PICTURES);
 
         mImageFile = File.createTempFile(
-                name,  /* prefix */
-                extension,        /* suffix */
-                storageDir      /* directory */
+                name,       /* prefix */
+                extension,  /* suffix */
+                storageDir  /* directory */
         );
     }
 
@@ -56,7 +63,7 @@ public class ImageFileImpl implements ImageFile {
 
     @Override
     public String getPath() {
-        return Uri.fromFile(mImageFile).toString();
+        Uri uri = FileProviderUtil.getUriForFile(context, mImageFile);
+        return uri.toString();
     }
-
 }
