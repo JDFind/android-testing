@@ -2,7 +2,6 @@ package com.example.android.testing.notes.notes;
 
 import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
-import android.support.test.espresso.action.ViewActions;
 import android.support.test.filters.LargeTest;
 import android.support.test.filters.SdkSuppress;
 import android.support.test.rule.ActivityTestRule;
@@ -107,12 +106,10 @@ public class AddNoteTests {
 
         // Verify note title is displayed on screen
         onView(allOf(withId(R.id.note_detail_title), withText(newNoteTitle)))
-                .perform(ViewActions.scrollTo())
                 .check(matches(isDisplayed()));
 
         // Verify note description is displayed on screen
         onView(allOf(withId(R.id.note_detail_description), withText(newNoteDescription)))
-                .perform(ViewActions.scrollTo())
                 .check(matches(isDisplayed()));
     }
 }
