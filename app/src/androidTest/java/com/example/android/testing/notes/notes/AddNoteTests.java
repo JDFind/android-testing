@@ -91,12 +91,12 @@ public class AddNoteTests {
         onView(withText(R.string.take_picture)).perform(click());
 
         // Click on shutter button
-        UiObject shutterBtn = mDevice.findObject(new UiSelector().text("Shutter"));
+        UiObject shutterBtn = mDevice.findObject(new UiSelector().resourceIdMatches(".*shutter_button"));
         shutterBtn.waitForExists(DEFAULT_TIMEOUT_MILLIS);
         shutterBtn.click();
 
         // Click on done button
-        UiObject doneBtn = mDevice.findObject(new UiSelector().resourceIdMatches(".*okay"));
+        UiObject doneBtn = mDevice.findObject(new UiSelector().resourceIdMatches(".*btn_done"));
         doneBtn.waitForExists(DEFAULT_TIMEOUT_MILLIS);
         doneBtn.click();
 
