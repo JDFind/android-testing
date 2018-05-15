@@ -2,6 +2,7 @@ package com.example.android.testing.notes.notes;
 
 import android.app.Instrumentation;
 import android.support.test.InstrumentationRegistry;
+import android.support.test.espresso.Espresso;
 import android.support.test.filters.LargeTest;
 import android.support.test.filters.SdkSuppress;
 import android.support.test.rule.ActivityTestRule;
@@ -11,7 +12,9 @@ import android.support.test.uiautomator.UiObject;
 import android.support.test.uiautomator.UiSelector;
 
 import com.example.android.testing.notes.R;
+import com.example.android.testing.notes.util.EspressoIdlingResource;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Rule;
 import org.junit.Test;
@@ -51,6 +54,12 @@ public class AddNoteTests {
 
         mInstrumentation = InstrumentationRegistry.getInstrumentation();
         mDevice = UiDevice.getInstance(mInstrumentation);
+        Espresso.registerIdlingResources(EspressoIdlingResource.getIdlingResource());
+    }
+
+    @After
+    public void tearDown() {
+        Espresso.unregisterIdlingResources(EspressoIdlingResource.getIdlingResource());
     }
 
     /**
